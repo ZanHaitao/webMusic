@@ -1,0 +1,193 @@
+body,
+ul,
+dl,
+h2 {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+body {
+    background-size: cover;
+}
+
+#app {
+    background: rgba(0, 0, 0, 0.2);
+    width: 100vw;
+    height: 100vh;
+    padding-top: 20vw;
+    box-sizing: border-box;
+
+    .songImg {
+        width: 70vw;
+        height: 70vw;
+        border-radius: 50%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #000;
+
+        img {
+            width: 80%;
+            height: 80%;
+            border-radius: 50%;
+        }
+    }
+
+    .songInfo {
+        text-align: center;
+        color: #fff;
+        margin-top: 6vw;
+        height: 20vh;
+
+        h2 {
+            font-size: 24px;
+            font-weight: normal;
+            margin-bottom: 3vw;
+        }
+
+        div {
+            font-size: 14px;
+        }
+    }
+
+    .progress {
+        height: 8vw;
+        color: #fff;
+        display: flex;
+
+        .curTime,
+        .endTime {
+            height: 8vw;
+            line-height: 8vw;
+            font-size: 14px;
+            margin: 0 5vw;
+        }
+
+        .drag {
+            height: 8vw;
+            line-height: 8vw;
+            flex: 1 1 auto;
+            position: relative;
+
+            .circle {
+                width: 2vw;
+                height: 2vw;
+                background-color: #fff;
+                position: absolute;
+                border-radius: 50%;
+                top: calc(50% - 3vw);
+                left: 0;
+                margin-left: -3vw;
+                background-clip: padding-box;
+                border: 2vw solid rgba(0, 255, 255, 0);
+                z-index: 3;
+            }
+            .frontBg,
+            .backBg {
+                height: 0.6vw;
+                background-color: #fff;
+                position: absolute;
+                top: calc(50% - 0.3vw);
+                left: 0;
+            }
+            .frontBg {
+                width: 0%;
+            }
+            .backBg {
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.3);
+            }
+        }
+    }
+
+    .control {
+        width: 100vw;
+        height: 16vw;
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+
+        li {
+            flex: 1;
+            background: no-repeat center/30%;
+            &:nth-child(1) {
+                background-image: url(../images/icon-like.png);
+                &.liked {
+                    background-image: url(../images/icon-like-solid.png);
+                }
+            }
+            &:nth-child(2) {
+                background-image: url(../images/icon-prev.png);
+            }
+            &:nth-child(3) {
+                background-image: url(../images/icon-play.png);
+                &.playing {
+                    background-image: url(../images/icon-pause.png);
+                }
+            }
+            &:nth-child(4) {
+                background-image: url(../images/icon-next.png);
+            }
+            &:nth-child(5) {
+                background-image: url(../images/icon-list.png);
+            }
+        }
+    }
+
+    .list {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 45vh;
+        color: #fff;
+        background: linear-gradient(rgb(5, 5, 5), rgba(170, 170, 170, 0.95));
+        z-index: 999;
+        padding: 0 5vw;
+        box-sizing: border-box;
+        transform: translateY(100%);
+        transition: transform 0.2s;
+        &.show {
+            transform: translateY(0);
+        }
+
+        .title,
+        .close {
+            text-align: center;
+            height: 7.5vh;
+            line-height: 7.5vh;
+            position: absolute;
+            width: calc(100% - 10vw);
+        }
+        .title {
+            top: 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .close {
+            bottom: 0;
+        }
+        .content {
+            height: 30vh;
+            margin-top: 7.5vh;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+            overflow-y: auto;
+            font-size: 14px;
+
+            li {
+                height: 7.5vh;
+                line-height: 7.5vh;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+                &:last-child {
+                    border-bottom: none;
+                }
+                &.active {
+                    color: #00ff7f;
+                }
+            }
+        }
+    }
+}
